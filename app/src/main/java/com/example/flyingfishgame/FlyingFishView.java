@@ -47,6 +47,9 @@ public class FlyingFishView  extends View
         yellowPaint.setColor(Color.YELLOW );
         yellowPaint.setAntiAlias(false);
 
+        greenPaint.setColor(Color.GREEN );
+        greenPaint.setAntiAlias(false);
+
         scorePaint.setColor(Color.WHITE);
         scorePaint.setTextSize(50);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
@@ -110,6 +113,25 @@ public class FlyingFishView  extends View
 
         // Draw the Yellow Ball
         canvas.drawCircle(yellowX, yellowY, 20, yellowPaint);
+
+        // The green Ball
+        greenX = greenX - greenSpeed;
+
+        // When fish gets a ball increase the score by 10
+        if (hitBallChecker(greenX,greenY))
+        {
+            score = score + 20;
+            greenX = - 100;
+        }
+
+        if (greenX < 0)
+        {
+            greenX = canvasWidth + 21;
+            greenY = (int) Math.floor(Math.random() * (maxFishY - minFishY)) + minFishY;
+        }
+
+        // Draw the Green Ball
+        canvas.drawCircle(greenX, greenY, 20, greenPaint);
 
         // Display the score
         canvas.drawText("Score : " + score, 20, 60, scorePaint);
