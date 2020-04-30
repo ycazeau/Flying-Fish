@@ -25,6 +25,9 @@ public class FlyingFishView  extends View
     private int greenX, greenY, greenSpeed = 20;
     private Paint greenPaint = new Paint();
 
+    private int redX, redY, redSpeed = 25;
+    private Paint redPaint = new Paint();
+
     private int score;
 
     private boolean touchScreen = false;
@@ -49,6 +52,9 @@ public class FlyingFishView  extends View
 
         greenPaint.setColor(Color.GREEN );
         greenPaint.setAntiAlias(false);
+
+        redPaint.setColor(Color.RED );
+        redPaint.setAntiAlias(false);
 
         scorePaint.setColor(Color.WHITE);
         scorePaint.setTextSize(50);
@@ -98,7 +104,7 @@ public class FlyingFishView  extends View
 
         yellowX = yellowX - yellowSpeed;
 
-        // When fish gets a ball increase the score by 10
+        // When fish gets a Yellow ball increase the score by 10
         if (hitBallChecker(yellowX,yellowY))
         {
             score = score + 10;
@@ -117,7 +123,7 @@ public class FlyingFishView  extends View
         // The green Ball
         greenX = greenX - greenSpeed;
 
-        // When fish gets a ball increase the score by 10
+        // When fish gets a Green ball increase the score by 10
         if (hitBallChecker(greenX,greenY))
         {
             score = score + 20;
@@ -132,6 +138,24 @@ public class FlyingFishView  extends View
 
         // Draw the Green Ball
         canvas.drawCircle(greenX, greenY, 20, greenPaint);
+
+        // The Red Ball
+        redX = redX - redSpeed;
+
+        // When fish gets a Red ball increase the score by 10
+        if (hitBallChecker(redX,redY))
+        {
+           redX = - 100;
+        }
+
+        if (redX < 0)
+        {
+            redX = canvasWidth + 21;
+            redY = (int) Math.floor(Math.random() * (maxFishY - minFishY)) + minFishY;
+        }
+
+        // Draw the Red Ball
+        canvas.drawCircle(redX, redY, 25, redPaint);
 
         // Display the score
         canvas.drawText("Score : " + score, 20, 60, scorePaint);
