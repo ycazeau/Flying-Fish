@@ -1,6 +1,7 @@
 package com.example.flyingfishgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -9,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class FlyingFishView  extends View
 {
@@ -28,7 +30,7 @@ public class FlyingFishView  extends View
     private int redX, redY, redSpeed = 25;
     private Paint redPaint = new Paint();
 
-    private int score;
+    private int score, fishLifeCounter;
 
     private boolean touchScreen = false;
 
@@ -45,7 +47,7 @@ public class FlyingFishView  extends View
         fish[0] = BitmapFactory.decodeResource(getResources(), R.drawable.fish1);
         fish[1] = BitmapFactory.decodeResource(getResources(), R.drawable.fish2);
 
-        backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+        backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.background  );
 
         yellowPaint.setColor(Color.YELLOW );
         yellowPaint.setAntiAlias(false);
@@ -66,6 +68,7 @@ public class FlyingFishView  extends View
 
         fishY = 550;
         score = 0;
+        fishLifeCounter = 3;
 
     }
 
@@ -142,10 +145,21 @@ public class FlyingFishView  extends View
         // The Red Ball
         redX = redX - redSpeed;
 
-        // When fish gets a Red ball increase the score by 10
+        // When fish gets a Red ball one life will be destroy
         if (hitBallChecker(redX,redY))
         {
            redX = - 100;
+           fishLifeCounter--;
+
+           if (fishLifeCounter == 0)
+           {
+               Toast.makeText(getContext(), "Game Over", Toast.LENGTH_SHORT).show();
+
+               Intent gameOverIntent = new Intent(getContext(), GameOverActivity.class);
+               gameOverIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+               getContext().startActivity(gameOverIntent);
+           }
+
         }
 
         if (redX < 0)
@@ -160,9 +174,20 @@ public class FlyingFishView  extends View
         // Display the score
         canvas.drawText("Score : " + score, 20, 60, scorePaint);
 
-        canvas.drawBitmap(life[0], 480,10,null);
-        canvas.drawBitmap(life[0], 550,10,null);
-        canvas.drawBitmap(life[0], 620,10,null);
+        for (int i = 0; i < 3; i++)
+        {
+            int x = (int)(480 + life[0].getWidth() * 1.5 * i);
+            int y = 30;
+
+            if (i < fishLifeCounter)
+            {
+                canvas.drawBitmap(life[0], x, y,null);
+            }
+            else
+            {
+                canvas.drawBitmap(life[1], x, y,null);
+            }
+        }
     }
 
     public boolean hitBallChecker(int x, int y)
