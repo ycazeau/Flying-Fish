@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:text="Game Over!"
         android:background="#5403A9F4"
         android:textAlignment="center"
@@ -31,12 +31,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="230dp"
         android:text="Total Score"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textColor="@color/White"
-        android:textSize="25dp"
+        android:textSize="30dp"
         android:textStyle="bold"/>
 
     <Button
@@ -46,14 +46,42 @@
         android:layout_below="@+id/displayScore"
         android:layout_centerHorizontal="true"
         android:background="@color/White"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:padding="15dp"
         android:text="Play Again"
         android:textAllCaps="false"
         android:textColor="#03A9F4"
         android:textSize="25dp"
-        android:textStyle="bold"
+        android:textStyle="bold"/>
 
-        />
+    <TextView
+        android:id="@+id/txtor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="430dp"
+        android:text="OR"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textColor="@color/White"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtor"
+        android:layout_centerHorizontal="true"
+        android:background="@color/White"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:text="Close"
+        android:textAllCaps="false"
+        android:textColor="#03A9F4"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

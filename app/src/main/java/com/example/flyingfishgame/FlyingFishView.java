@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class FlyingFishView  extends View
 {
     private Bitmap fish[] = new Bitmap[2];
+
     private int fishX = 10;
     private int fishY;
     private int fishSpeed;
@@ -126,7 +127,7 @@ public class FlyingFishView  extends View
         // The green Ball
         greenX = greenX - greenSpeed;
 
-        // When fish gets a Green ball increase the score by 10
+        // When fish gets a Green ball increase the score by 20
         if (hitBallChecker(greenX,greenY))
         {
             score = score + 20;
