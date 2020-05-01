@@ -157,6 +157,7 @@ public class FlyingFishView  extends View
 
                Intent gameOverIntent = new Intent(getContext(), GameOverActivity.class);
                gameOverIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+               gameOverIntent.putExtra("score", score);
                getContext().startActivity(gameOverIntent);
            }
 

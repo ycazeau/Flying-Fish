@@ -24,18 +24,33 @@
         android:textSize="70dp"
         android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/displayScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="300dp"
+        android:text="Total Score"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textColor="@color/White"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+
     <Button
         android:id="@+id/btnPlayAgain"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gameOver"
+        android:layout_below="@+id/displayScore"
         android:layout_centerHorizontal="true"
-        android:background="#03A9F4"
-        android:layout_marginTop="40dp"
+        android:background="@color/White"
+        android:layout_marginTop="100dp"
         android:padding="15dp"
         android:text="Play Again"
         android:textAllCaps="false"
-        android:textColor="@color/White"
+        android:textColor="#03A9F4"
         android:textSize="25dp"
         android:textStyle="bold"
 
